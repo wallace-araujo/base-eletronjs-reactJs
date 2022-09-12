@@ -1,12 +1,19 @@
 {
-  "name": "selfie_ar",
-  "version": "0.1.0",
+  "name": "desktop_example",
+  "version": "0.1.1",
   "private": true,
-  "main": "main.js",
+  "main": "public/electron.js",
+  "homepage": "./",
+  "author": {
+    "name": "wallace",
+    "email": "wallace.araujo007@blueyou.com.br"
+  },
+  "description": "desktop react",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "electron-is-dev": "^2.0.0",
     "react": "17",
     "react-dom": "17",
     "react-router-dom": "^6.3.0",
@@ -18,7 +25,26 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron": "electron ."
+    "electron": "electron .",
+    "win": "yarn build && electron-builder -w -c.extraMetadata.main=build/electron.js",
+    "mac": "yarn build && electron-builder -m -c.extraMetadata.main=build/electron.js",
+    "linux": "yarn build && electron-builder -l -c.extraMetadata.main=build/electron.js"
+  },
+  "build": {
+    "appId": "com.example.desktop",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "public"
+    },
+    "linux": {
+      "target": [
+        "deb"
+      ],
+      "category": "Utility"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -39,6 +65,7 @@
     ]
   },
   "devDependencies": {
-    "electron": "^20.1.1"
+    "electron": "^20.1.1",
+    "electron-builder": "^23.3.3"
   }
 }

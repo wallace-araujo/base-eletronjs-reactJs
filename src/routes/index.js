@@ -3,7 +3,7 @@ import Home from "../pages/Home";
 
 const routesConfig = [
   {
-    path: "/",
+    path: "*",
     element: <Home />,
   },
 ];
@@ -14,7 +14,7 @@ const AppRoute = () => {
       {routesConfig.map((options, idx) => (
         <Route key={`routes-${idx}`} {...options} />
       ))}
-      <Route path="*" element={<h1>Not found</h1>} />
+      {/* <Route path="*" element={<h1>Not found</h1>} /> */}
     </Routes>
   );
 };
